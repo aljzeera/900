@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+<html manifest="Aljzeera"><head>
+<title>Aljzeera Manual Exploit for 9.00 FW</title>
+<link rel="stylesheet prefetch" href="Style.css">
+<style>
+html, body {
+//background-image: url('1.jpg');
+background-size: 100%;
+background-repeat: no-repeat;
+//background-color: #24272b;
+color: white;
+text-align: center;
+margin: 0px;
+overflow: hidden;
+}
+  .themes {
+   width:98%;
+   margin:0 auto;
+   margin-left:2%;
+   margin-top:2%;
+  }
+  .theme {
+    background:rgba(0,0,0,0.75);
+    width:14.1%;
+    text-align:center;
+    display:inline-block;
+    margin-right:2.5%;
+    margin-bottom:2.5%;
+  }
+  .theme img {
+    width:100%;
+  }
+  .theme span  {
+   color:white;
+   display:block;
+   padding:10px;
+  }
+
+		button2 {
+		  background:rgba(0,0,0,0.5);
+		  box-shadow: 0 5px 20px 0 white;
+		  border: 2px solid black;
+		  border-radius: 10px;
+		  color: white;
+		  text-decoration: none;
+		  width: 200px;
+          height: 40px;
+		  display:inline-table;
+		  font-family: system-ui;
+		  text-align: center;
+		}
+
+		button2:focus,
+		button2:hover {
+		  color: White;
+		  box-shadow: 0 5px 50px 0 white;
+		  background-color: #87FF33;
+          border-radius: 10px;
+		}
+
+h1 {
+text-shadow: 0.1em 0.1em 0.2em black;
+font-size: 25px;
+text-align: center;
+color: white;
+}
+.btn {
+background-color: #003263;
+color: white;
+width: 260px;
+height: 49px;
+padding-bottom: 5px;
+text-align: center;
+font-size: 20px;
+margin-top: 8px;
+margin-bottom: 8px;
+margin-left: 8px;
+margin-right: 8px;
+border-bottom-width: 0px;
+border-right-width: 0px;
+border-top-width: 0px;
+border-left-width: 0px;
+transition-duration: 0.4s;
+cursor: pointer;
+border-radius: 8px;
+}
+.btn:hover {
+background-color: #0058b1;
+}
+.btn-toolbox {
+background-color: #ae2301;
+}
+.btn-toolbox:hover {
+background-color: #d42a01;
+}
+</style>
+<script>
+function DLProgress(e){
+	parent.ScrOverlay.style.display="block";
+	Percent=(Math.round(e.loaded / e.total * 100));
+	parent.cacheUPDtxt.innerHTML="Installing Offline Cache: " + Percent + "%";
+	parent.CacheBar.style.width=Percent + '%';
+}
+function DisplayCacheProgress(){
+	setTimeout(function(){parent.cacheUPDtxt.innerHTML="Cache Installed Successfully.Turn off Internet & Reopen the Browser!!";},1000);}
+	window.applicationCache.addEventListener("progress",DLProgress,false);
+	window.applicationCache.oncached=function(e){DisplayCacheProgress();};
+	window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+	window.applicationCache.onerror=function(e){parent.cacheUPDtxt.innerHTML="Error Installing Cache";
+};
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js"></script>
+<script src="webkit.js"></script>
+</head>
+<body class="bg-darker">
+<div id="container"  style="">
+<div id=ScrOverlay class=cacheUPDbg><pre id=cacheUPDtxt class=cacheUPD></pre>
+<div id=CacheProgress><div id=CacheBar></div></div></div>
+<hr><span id="date" ></span><span id="clock" ></span><h1 style='font-size:25px;text-align:center;color:white;'><h1 id="msgs">ALJZEERA for 9.00 FW </h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+<hr>
+<div class="about" ><a href="about.html" >About Us</a></div>
+<div class="about2" ><a href="theme.html" >Themes</a></div>
+<div id="myModal" class="modal">
+  <!-- MODAL CONTENTS -->
+  <div class="modal-content">
+  <span class="close"></span>
+    <div class="modal-body">
+
+    <br><br><br>
+    </div>
+  </div>
+</div>
+<script>
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+<h1 id=msgs2 style='font-size:25px;text-align:center;color: yellow;'>STATUS</h1><hr>
+<br>
+<div style='font-size:20px;text-align:center;color:#87FF33;'>Bin Loader / Mira / GoldHen</div>
+<a href="binloader.html"><button style='font-size:20px;text-align:center;color:#4863A0;margin-left:60px' class="pointer" onMouseOver="msgs2.innerHTML='Loads a bin file sent to the PS4 IP address on port 9020'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Bin Loader </B></button></a>
+<a href="mira.html#p0=mira.js&p1=mira2.js"><button style='font-size:22px;text-align:center;color:#4863A0;background-color: golden;width: 200px;' class="pointer" onMouseOver="msgs2.innerHTML='Mira Orbis for PS4 9.00 Fw'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Mira </B></button></a>
+<button style='font-size:22px;text-align:center;color:white;background-color: goldenrod;width: 200px;' class="pointer" onclick=load_goldhen21() onMouseOver="msgs2.innerHTML='GoldHEN 2.1 by SISTRo'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GoldHen 2.1 </B></button></a>
+<button style='font-size:22px;text-align:center;color:white;background-color: goldenrod;width: 200px;' class="pointer" onclick=load_goldhen212() onMouseOver="msgs2.innerHTML='GoldHEN 2.1.2 [ Fixed config parser ] by SISTRo'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GoldHen 2.1.2 </B></button></a>
+<button style='font-size:22px;text-align:center;color:white;background-color: goldenrod;width: 200px;' class="pointer" onclick=load_goldhen222() onMouseOver="msgs2.innerHTML='GoldHEN 2.2.2 [ Added cheat absolute offset support & Fixed some bugs ] by SISTRo'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GoldHen 2.2.2 </B></button></a>
+<br>
+<div style=font-size:20px;text-align:center;color:#87FF33;>Payloads</div>
+<button style='font-size:20px;text-align:center;color:#4863A0;margin-left:60px;' class="pointer" onclick=load_app2usb() onMouseOver="msgs2.innerHTML='Move installed games to an external USB drive'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> App2USB </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;' class="pointer" onclick=load_ftp() onMouseOver="msgs2.innerHTML='A full access FTP server for the PS4'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> FTP </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;' class="pointer" onclick=load_todex() onMouseOver="msgs2.innerHTML='unlocks some debug features available on Devkit'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> ToDex </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;' class="pointer" onclick=load_dbackup() onMouseOver="msgs2.innerHTML='Create a backup of important database files ans User Data'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> DB Backup </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;' class="pointer" onclick=load_dbrestore() onMouseOver="msgs2.innerHTML='Restore a backup of the database files and User Data'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> DB Restore </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 130px;' class="pointer" onclick=load_exitidu() onMouseOver="msgs2.innerHTML='Disable IDU Mode'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Exit IDU </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;' class="pointer" onclick=load_fanthreshold() onMouseOver="msgs2.innerHTML='Set the desired temperature that the PS4 fan starts'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Fan Selector </B></button><select id="tempC"></select><a style='font-size:17px;text-align:center;color:white;'>&#176;C</a>
+<br>
+<button style='font-size:20px;text-align:center;color:#4863A0;margin-left:5px;width: 180px;' class="pointer" onclick=load_permUart() onMouseOver="msgs2.innerHTML='Permanent Uart'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Permanent Uart </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_rifRen() onMouseOver="msgs2.innerHTML='Rif Renamer'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Rif Renamer </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_historyBlocker() onMouseOver="msgs2.innerHTML='Disable the auto opening of the last page used in the PS4 WebBrowser'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> History Blocker </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_disableUpdates() onMouseOver="msgs2.innerHTML='Creates dummy files in the PS4 update folder'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B>Disable Update</B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_enablebUpdates() onMouseOver="msgs2.innerHTML='Removes the dummy files in the PS4 update folder'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Enable Update </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_ebrowser() onMouseOver="msgs2.innerHTML='Enable Browser'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Enable Browser </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 150px'' class="pointer" onclick=load_disbAslr() onMouseOver="msgs2.innerHTML='disable aslr'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Disable Aslr </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 190px;' class="pointer" onclick=load_ps4parentalcontrols() onMouseOver="msgs2.innerHTML='PS4 Parental Controls Passcode Notification - if shows 0000 that means passcode is not set'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Parental Controls </B></button></a>
+<br>
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;background-color:red;color:white;width: 180px' class="pointer" onclick=load_orbistoolbox() onMouseOver="msgs2.innerHTML='Orbis Toolbox Loader Alfa v1190'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Orbis Toolbox </B></button></a>
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;background-color:green;color:white' class="pointer" onclick=load_ps4debug() onMouseOver="msgs2.innerHTML='Ps4 Debugger '" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Ps4Debug </B></button></a>
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;background-color:#76411D;color:white' class="pointer" onclick=load_webactivator() onMouseOver="msgs2.innerHTML='PSN Offline Web Activitor - By Sleirsgoevy'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Web Activator </B></button></a>
+<button style='font-size:20px;text-align:center;text-shadow: 4px 4px 4px black;background-color:blue;color:white' class="pointer" onclick=load_webrte() onMouseOver="msgs2.innerHTML='Webrte for mods Game'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Webrte </B></button></a>
+<a href="http://nightkinghost.com/trainer/index.html"><button style='font-size:20px;text-align:center;color:#4863A0;width: 155px' class="pointer" onMouseOver="msgs2.innerHTML='Loads PS4 Traine Offline'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Ps4 trainer </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_kernelClock() onMouseOver="msgs2.innerHTML='Change clock kernel'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Kernel Clock </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_moduleDump() onMouseOver="msgs2.innerHTML='module dumper'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Module Dumper </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_kerneldumper() onMouseOver="msgs2.innerHTML='Dump Kernel As Bin format File in Your External flash Drive'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Kernel Dumper </B></button></a>
+<br>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_todexon() onMouseOver="msgs2.innerHTML='unlock some debug features availble on testkit'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> ToDex Enable </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_todexoff() onMouseOver="msgs2.innerHTML='Disable ToDEx'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> ToDex Disable </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_gamedumper() onMouseOver="msgs2.innerHTML='Dump Games only to a USB drive by Leeful'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Game Dumper </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_updatedumper() onMouseOver="msgs2.innerHTML='Dump Games Update to a USB drive by Leeful'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Update Dumper </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_mgu() onMouseOver="msgs2.innerHTML='Dump Merged Games and Update to a USB drive by Leeful'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> MGU Dumper </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_sgu() onMouseOver="msgs2.innerHTML='Dump Separate Games and Update to a USB drive by Leeful'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> SGU Dumper </B></button></a>
+<br>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_linux() onMouseOver="msgs2.innerHTML='Linux Loader 1GB Video Ram and 7GB System Ram.'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Linux 1GB </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_linux1() onMouseOver="msgs2.innerHTML='Linux Loader 2GB Video Ram and 6GB System Ram.'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Linux 2GB </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_linux2() onMouseOver="msgs2.innerHTML='Linux Loader 3GB Video Ram and 5GB System Ram.'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Linux 3GB </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_linux3() onMouseOver="msgs2.innerHTML='Linux Loader 4GB Video Ram and 4GB System Ram.'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Linux 4GB </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0' class="pointer" onclick=load_linux4() onMouseOver="msgs2.innerHTML='Linux Loader 5GB Video Ram and 3GB System Ram.'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> Linux 5GB </B></button></a>
+<br>
+<div style=font-size:20px;text-align:center;color:#87FF33;>Mods</div>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 190px;' class="pointer" onclick=load_gtabeef133() onMouseOver="msgs2.innerHTML='GTA V Beef Queef Mod v1.33 - in Game active Menu with Right Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V Beef v1.33 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 190px;' class="pointer" onclick=load_gtabeef134() onMouseOver="msgs2.innerHTML='GTA V Beef Queef Mod v1.34 - in Game active Menu with Right Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V Beef v1.34 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 190px;' class="pointer" onclick=load_gtabeef138() onMouseOver="msgs2.innerHTML='GTA V Beef Queef Mod v1.38 - in Game active Menu with Right Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V Beef v1.38 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_gta100() onMouseOver="msgs2.innerHTML='GTA V ArabicGuy Mod v1.00 - in Game active Menu with L1+R1'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V Ar v1.00 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_gta127() onMouseOver="msgs2.innerHTML='GTA V ArabicGuy Mod v1.27 - in Game active Menu with Right Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V Ar v1.27 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_gta132() onMouseOver="msgs2.innerHTML='GTA V ArabicGuy Mod v1.32 - in Game active Menu with Right Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V Ar v1.32 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 180px;' class="pointer" onclick=load_gta133() onMouseOver="msgs2.innerHTML='GTA V ArabicGuy Mod v1.33 - in Game active Menu with Right Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V Ar v1.33 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 250px;' class="pointer" onclick=load_gtawildmodz132() onMouseOver="msgs2.innerHTML='GTA V WildeModz Mod v1.32 - in Game active Menu with Left Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V WildeModz v1.32 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 250px;' class="pointer" onclick=load_gtawildmodz133() onMouseOver="msgs2.innerHTML='GTA V WildeModz Mod v1.33 - in Game active Menu with Left Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V WildeModz v1.33 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 250px;' class="pointer" onclick=load_gtawildmodz138() onMouseOver="msgs2.innerHTML='GTA V WildeModz Mod v1.38 - in Game active Menu with Left Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V WildeModz v1.38 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#4863A0;width: 250px;' class="pointer" onclick=load_gtaexpulsion138() onMouseOver="msgs2.innerHTML='GTA V Expulsion Mod v1.38 By LushModz V4.0 - in Game active Menu with Right Pad + Square'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> GTA V Expulsion v1.38 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#FF002A;width: 150px;' class="pointer" onclick=load_rdr2100() onMouseOver="msgs2.innerHTML='Red dead redemtion 2 mod menu 1.00 V1.3.5 by RF0oDxM0Dz (R1 + Square)'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> RDR2 V1.00 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#FF002A;width: 150px;' class="pointer" onclick=load_rdr2113() onMouseOver="msgs2.innerHTML='Red dead redemtion 2 mod menu 1.13 V1.3.5 by RF0oDxM0Dz (R1 + Square)'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> RDR2 V1.13 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#FF002A;width: 150px;' class="pointer" onclick=load_rdr2119() onMouseOver="msgs2.innerHTML='Red dead redemtion 2 mod menu 1.19 V1.3.5 by RF0oDxM0Dz (R1 + Square)'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> RDR2 V1.19 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#FF002A;width: 150px;' class="pointer" onclick=load_rdr2124() onMouseOver="msgs2.innerHTML='Red dead redemtion 2 mod menu 1.24 V1.3.5 by RF0oDxM0Dz (R1 + Square)'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> RDR2 V1.24 </B></button></a>
+<button style='font-size:20px;text-align:center;color:#FF002A;width: 150px;' class="pointer" onclick=load_rdr2129() onMouseOver="msgs2.innerHTML='Red dead redemtion 2 mod menu 1.29 V1.3.5 by RF0oDxM0Dz (R1 + Square)'" ; onmouseout="msgs2.innerHTML='STATUS'" type="button"><B> RDR2 V1.29 </B></button></a>
+<br><br>
+	<a style='font-size:20px;text-align:center;color:#FFD700;'>
+      Main Owner : <a style='font-size:20px;text-align:center;color:white;'>
+          Aljzeera - Telegram اعثر علينا في إذا كان لديك أي نوع من المشاكل  !&nbsp;<a href="https://t.me/aljzeera2001" style='font-size:20px;text-align:center;color:red;'>@ALJZEERA</a> <a style='font-size:20px;text-align:center;color:white;'>And Facebook :&nbsp;<a href="https://www.facebook.com/aljzeera1" style='font-size:20px;text-align:center;color:red;'>@aljzeera</a></h1>
+ <br>
+    <a style='font-size:20px;text-align:center;color:#FFD700;'>
+	 Special Thanks To : <a style='font-size:20px;text-align:center;color:white;'>
+		 
+		 aljzeera  ...&nbsp;
+
+<script>
+var exec_type = "";
+
+function toogle_payload(){
+var req = new XMLHttpRequest();
+req.responseType = "arraybuffer";
+req.open("GET",PLfile,true);
+req.send();
+req.onreadystatechange=function(){
+if (req.readyState == 4){
+  var tmp0 = new Uint8Array(req.response.byteLength);
+  tmp0.set(new Uint8Array(req.response), 0);
+  var payload = new Uint32Array(tmp0);
+  ghPL = payload;
+  setTimeout(poc, 1500);
+  }
+};
+}
+
+function awaitpl() {
+window.msgs.innerHTML="<h1 style=color:#87FF33>"+LoadedMSG+"</h1>";
+history.pushState({}, '', 'index.html');
+read_ptr_at(0);
+}
+
+function load_miraloader(){
+var script = document.createElement('script');script.src = "mira.js";document.getElementsByTagName('head')[0].appendChild(script);
+msgs.innerHTML="Payload Loading... Please Wait !!!";
+LoadedMSG="Payload Loaded... Press OK Now !!!";
+exec_type = "payload";
+setTimeout(poc,1500);
+}
+
+function load_mira(){
+var script = document.createElement('script');script.src = "mira2.js";document.getElementsByTagName('head')[0].appendChild(script);
+msgs.innerHTML="Loading Jailbreak + Mira Orbis... Please Wait !!!";
+LoadedMSG="Mira Orbis Loaded... Press OK Now !!!";
+exec_type = "payload";
+setTimeout(poc,1500);
+}
+
+function load_goldhen21(){
+msgs.innerHTML="Loading Jailbreak + GoldHEN v2.1... Please Wait !!!";
+LoadedMSG="GoldHEN v2.1 Loaded... Press OK Now !!!";
+PLfile = "goldhen21.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_goldhen212(){
+msgs.innerHTML="Loading Jailbreak + GoldHEN v2.1.2 ... Please Wait !!!";
+LoadedMSG="GoldHEN v2.1.2 Loaded... Press OK Now !!!";
+PLfile = "goldhen212.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_goldhen222(){
+msgs.innerHTML="Loading Jailbreak + GoldHEN v2.2.2 ... Please Wait !!!";
+LoadedMSG="GoldHEN v2.2.2 Loaded... Press OK Now !!!";
+PLfile = "goldhen222.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gtabeef133(){
+msgs.innerHTML="Loading Jailbreak + GTA V Beef Queef v1.33... Please Wait !!!";
+LoadedMSG="GTA V Beef Queef v1.33 Loaded... Press OK Now !!!";
+PLfile = "BeefQueefMod133.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gtabeef134(){
+msgs.innerHTML="Loading Jailbreak + GTA V Beef Queef v1.34... Please Wait !!!";
+LoadedMSG="GTA V Beef Queef v1.34 Loaded... Press OK Now !!!";
+PLfile = "BeefQueefMod134.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gtabeef138(){
+msgs.innerHTML="Loading Jailbreak + GTA V Beef Queef v1.38... Please Wait !!!";
+LoadedMSG="GTA V Beef Queef v1.38 Loaded... Press OK Now !!!";
+PLfile = "BeefQueefMod138.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gta100(){
+msgs.innerHTML="Loading Jailbreak + GTA V Arabic Guy v1.00... Please Wait !!!";
+LoadedMSG="GTA V ArabicGuy v1.00 Loaded... Press OK Now !!!";
+PLfile = "gtavar100.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gta127(){
+msgs.innerHTML="Loading Jailbreak + GTA V Arabic Guy v1.27... Please Wait !!!";
+LoadedMSG="GTA V ArabicGuy v1.27 Loaded... Press OK Now !!!";
+PLfile = "arabicguy127.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gta132(){
+msgs.innerHTML="Loading Jailbreak + GTA V Arabic Guy v1.32... Please Wait !!!";
+LoadedMSG="GTA V ArabicGuy v1.32 Loaded... Press OK Now !!!";
+PLfile = "arabicguy132.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gta133(){
+msgs.innerHTML="Loading Jailbreak + GTA V Arabic Guy v1.33... Please Wait !!!";
+LoadedMSG="GTA V ArabicGuy v1.33 Loaded... Press OK Now !!!";
+PLfile = "arabicguy133.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gtawildmodz132(){
+msgs.innerHTML="Loading Jailbreak + GTA V WildeModz v1.32... Please Wait !!!";
+LoadedMSG="GTA V WildeModz v1.32 Loaded... Press OK Now !!!";
+PLfile = "wildemodz132.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gtawildmodz133(){
+msgs.innerHTML="Loading Jailbreak + GTA V WildeModz v1.33... Please Wait !!!";
+LoadedMSG="GTA V WildeModz v1.33 Loaded... Press OK Now !!!";
+PLfile = "wildemodz133.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gtawildmodz138(){
+msgs.innerHTML="Loading Jailbreak + GTA V WildeModz v1.38... Please Wait !!!";
+LoadedMSG="GTA V WildeModz v1.38 Loaded... Press OK Now !!!";
+PLfile = "wildemodz138.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gtaexpulsion138(){
+msgs.innerHTML="Loading Jailbreak + GTA V Expulsion v1.38... Please Wait !!!";
+LoadedMSG="GTA V Expulsion v1.38 Loaded... Press OK Now !!!";
+PLfile = "gtavexpulsion138.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_rdr2100(){
+msgs.innerHTML="Loading Read Dead Redemption II Mod v1.00 ... Please Wait !!!";
+LoadedMSG="Read Dead Redemption II Mod v1.00 Loaded";
+PLfile = "OystersMenu100.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_rdr2113(){
+msgs.innerHTML="Loading Read Dead Redemption II Mod v1.13 ... Please Wait !!!";
+LoadedMSG="Read Dead Redemption II Mod v1.13 Loaded";
+PLfile = "OystersMenu113.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_rdr2119(){
+msgs.innerHTML="Loading Read Dead Redemption II Mod v1.19 ... Please Wait !!!";
+LoadedMSG="Read Dead Redemption II Mod v1.19 Loaded";
+PLfile = "OystersMenu119.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_rdr2124(){
+msgs.innerHTML="Loading Read Dead Redemption II Mod v1.24 ... Please Wait !!!";
+LoadedMSG="Read Dead Redemption II Mod v1.24 Loaded";
+PLfile = "OystersMenu124.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_rdr2129(){
+msgs.innerHTML="Loading Read Dead Redemption II Mod v1.29 ... Please Wait !!!";
+LoadedMSG="Read Dead Redemption II Mod v1.29 Loaded";
+PLfile = "OystersMenu129.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_todex(){
+msgs.innerHTML="Loading Jailbreak + ToDex... Please Wait !!!";
+LoadedMSG="ToDex Loaded... Press OK Now !!!";
+PLfile = "todex.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_kerneldumper(){
+msgs.innerHTML="Loading Jailbreak + Kernel Dumper... Please Wait !!!";
+LoadedMSG="Kernel Dumper Loaded... Press OK Now !!!";
+PLfile = "kerneldumper.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_todexon(){
+msgs.innerHTML="Loading Jailbreak + ToDex Enable... Please Wait !!!";
+LoadedMSG="ToDex Enable Loaded... Press OK Now !!!";
+PLfile = "todex_enable.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_todexoff(){
+msgs.innerHTML="Loading Jailbreak + ToDex Disable... Please Wait !!!";
+LoadedMSG="ToDex Disable Loaded... Press OK Now !!!";
+PLfile = "todex_disable.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_gamedumper(){
+msgs.innerHTML="Loading Jailbreak + Game Dumper... Please Wait !!!";
+LoadedMSG="Game Dumper Loaded... Press OK Now !!!";
+PLfile = "DumperG.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_updatedumper(){
+msgs.innerHTML="Loading Jailbreak + Update Dumper... Please Wait !!!";
+LoadedMSG="Update Dumper Loaded... Press OK Now !!!";
+PLfile = "DumperU.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_mgu(){
+msgs.innerHTML="Loading Jailbreak + MGU Dumper... Please Wait !!!";
+LoadedMSG="MGU Dumper Loaded... Press OK Now !!!";
+PLfile = "DumperMGU.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_sgu(){
+msgs.innerHTML="Loading Jailbreak + SGU Dumper... Please Wait !!!";
+LoadedMSG="SGU Dumper Loaded... Press OK Now !!!";
+PLfile = "DumperSGU.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_ftp(){
+msgs.innerHTML="Loading Jailbreak + FTP... Please Wait !!!";
+LoadedMSG="FTP Loaded... Press OK Now !!!";
+PLfile = "ftp.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_app2usb(){
+msgs.innerHTML="Loading Jailbreak + AppUsb... Please Wait !!!";
+LoadedMSG="AppUsb Loaded... Press OK Now !!!";
+PLfile = "app2usb.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_webrte(){
+msgs.innerHTML="Loading Jailbreak + WebRte... Please Wait !!!";
+LoadedMSG="WebRte Loaded... Press OK Now !!!";
+PLfile = "webrte.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_ps4debug(){
+msgs.innerHTML="Loading Jailbreak + Ps4Debug... Please Wait !!!";
+LoadedMSG="Ps4Debug Loaded... Press OK Now !!!";
+PLfile = "ps4debug.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_dbackup(){
+msgs.innerHTML="Loading Jailbreak + Ps4Debug... Please Wait !!!";
+LoadedMSG="DB Backup Loaded... Press OK Now !!!";
+PLfile = "backup.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_dbrestore(){
+msgs.innerHTML="Loading Jailbreak + DB Restore... Please Wait !!!";
+LoadedMSG="DB Restore Loaded... Press OK Now !!!";
+PLfile = "restore.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_enablebUpdates(){
+msgs.innerHTML="Loading Jailbreak + Enable Updates... Please Wait !!!";
+LoadedMSG="Enable Updates Loaded... Press OK Now !!!";
+PLfile = "enableupdate.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_disableUpdates(){
+msgs.innerHTML="Loading Jailbreak + Disable Updates... Please Wait !!!";
+LoadedMSG="Disable Updates Loaded... Press OK Now !!!";
+PLfile = "disableupdates.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_historyBlocker(){
+msgs.innerHTML="Loading Jailbreak + History Blocker... Please Wait !!!";
+LoadedMSG="History Blocker Loaded... Press OK Now !!!";
+PLfile = "historyblocker.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_kernelClock(){
+msgs.innerHTML="Loading Jailbreak + Kernel Clock... Please Wait !!!";
+LoadedMSG="Kernel Clock Loaded... Press OK Now !!!";
+PLfile = "kernelclock.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_fanthreshold(){
+var script = document.createElement('script');script.src = "fanthreshold.js";localStorage.setItem('fanthreshold', tempC.value);document.getElementsByTagName('head')[0].appendChild(script);
+msgs.innerHTML="Loading Jailbreak + Fan Threshold... Please Wait !!!";
+LoadedMSG="Fan Threshold Loaded... Press OK Now !!!";
+exec_type = "payload";
+setTimeout(poc,1500);
+}
+
+function load_webactivator(){
+var script = document.createElement('script');script.src = "webactivator.js";document.getElementsByTagName('head')[0].appendChild(script);
+msgs.innerHTML="Loading Jailbreak + Web Activator... Please Wait !!!";
+LoadedMSG="Web Activator Loaded... Press OK Now !!!";
+exec_type = "payload";
+setTimeout(poc,1500);
+}
+
+function load_linux(){
+msgs.innerHTML="Loading Jailbreak + Linux Loader... Please Wait !!!";
+LoadedMSG="Linux Loader Loaded... Press OK Now !!!";
+PLfile = "linuxloader.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_linux1(){
+msgs.innerHTML="Loading Jailbreak + Linux Loader... Please Wait !!!";
+LoadedMSG="Linux Loader -2gb Loaded... Press OK Now !!!";
+PLfile = "linuxloader2gb.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_linux2(){
+msgs.innerHTML="Loading Jailbreak + Linux Loader... Please Wait !!!";
+LoadedMSG="Linux Loader -3gb Loaded... Press OK Now !!!";
+PLfile = "linuxloader3gb.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_linux3(){
+msgs.innerHTML="Loading Jailbreak + Linux Loader... Please Wait !!!";
+LoadedMSG="Linux Loader -4gb Loaded... Press OK Now !!!";
+PLfile = "linuxloader4gb.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_linux4(){
+msgs.innerHTML="Loading Jailbreak + Linux Loader... Please Wait !!!";
+LoadedMSG="Linux Loader -5gb Loaded... Press OK Now !!!";
+PLfile = "linuxloader5gb.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_exitidu(){
+msgs.innerHTML="Loading Jailbreak + Exit idu... Please Wait !!!";
+LoadedMSG="Exit idu Loaded... Press OK Now !!!";
+PLfile = "exitidu.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_ps4parentalcontrols(){
+msgs.innerHTML="Loading Jailbreak + Parental Controls... Please Wait !!!";
+LoadedMSG="Parental Controls Loaded... Press OK Now !!!";
+PLfile = "ps4parentalcontrols.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_moduleDump(){
+msgs.innerHTML="Loading Jailbreak + Module Dumper... Please Wait !!!";
+LoadedMSG="Module Dumper Loaded... Press OK Now !!!";
+PLfile = "moduledumper.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_orbistoolbox(){
+msgs.innerHTML="Loading Jailbreak + Orbis Toolbox Alfa v1190... Please Wait !!!";
+LoadedMSG="Orbis Toolbox Alfa v1190 Loaded... Press OK Now !!!";
+PLfile = "OrbisToolbox900.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_disbAslr(){
+msgs.innerHTML="Loading Jailbreak + Disable ASLR... Please Wait !!";
+LoadedMSG="Disable ASLR Loaded... Press OK Now !!!";
+PLfile = "daslr.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_rifRen(){
+msgs.innerHTML="Loading Jailbreak + RIF Renamer... Please Wait !!!";
+LoadedMSG="RIF Renamer Loaded... Press OK Now !!!";
+PLfile = "rifren.bin";
+exec_type = "payload";
+toogle_payload();
+}
+
+function load_permUart(){
+msgs.innerHTML="Loading Jailbreak + Permanent UART... Please Wait !!!";
+LoadedMSG="Permanent UART Loaded... Press OK Now !!!";
+PLfile = "puart.bin";
+exec_type = "payload";
+toogle_payload();
+}
+</script>
+<script type="text/javascript">
+ if(localStorage.getItem("theme")==null){
+   localStorage.setItem("theme","1.jpg")
+ }
+ document.body.style.background = "url('"+localStorage.getItem("theme")+"')"
+ document.body.style.backgroundSize = "cover"
+ var imgs = ["1.jpg","2.jpg","3.jpg","4.jpg"];
+ render()
+ function render(){
+     document.querySelector(".themes").innerHTML=""
+	 for(let i=0;i<imgs.length;i++){
+	    var selectText = "Select"
+	    var textColor = "white"
+	    if(localStorage.theme==imgs[i]){
+	      selectText="Selected"
+	      textColor="green"
+	    }
+	 	document.querySelector(".themes").innerHTML+='<div class="theme" ><img src="img/'+imgs[i]+'" ><span style="color:'+textColor+';" onclick="set('+i+')">'+selectText+'</span></div>';
+	 }
+ }
+ function set(i){
+    localStorage.setItem("theme",imgs[i])
+    render()
+ 	document.body.style.background = "url('"+imgs[i]+"')"
+ 	document.body.style.backgroundSize = "cover"
+ }
+</script>
+<script>
+for(var i=40; i<=79; i++){
+    var select = document.getElementById("tempC");
+    var option = document.createElement("OPTION");
+	select.options.add(option);
+	option.text = i;
+	option.value = i;
+}
+tempC.value=60;
+</script>
+</body>
+</html>
